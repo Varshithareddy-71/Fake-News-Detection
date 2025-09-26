@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fake News Detector</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f2f5;
+            background-image: url('https://img.freepik.com/premium-psd/ripped-old-newspaper-brown-background_536881-439.jpg?semt=ais_hybrid&w=740'); /* Replace with your image path */
+            background-size: cover;       /* Cover the entire page */
+            background-repeat: no-repeat; /* Prevent image from repeating */
+            background-position: center;  /* Center the image */
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 50px;
+        }
+        form {
+            background: transparent;
+            padding: 50px;
+            border-radius: 10px;
+            width: 400px;
+        }
+
+        h1 {
+            color: #0d3145;
+            padding-left: 80px;
+            font-size: 40px;
+        }
+
+
+        textarea {
+            width: 125%;
+            height: 300px;
+            padding: 10px;
+            
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: #0d3145;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #222;
+        }
+    </style>
+</head>
+<body>
+    <h1>Fake News Detector</h1>
+    <form method="POST" action="/predict">
+        <textarea name="news" placeholder="Enter news text here...">{{ user_input or '' }}</textarea>
+        <button type="submit">Check</button>
+    </form>
+    {% if prediction1 %}
+        <div class="result">Prediction of LR: {{ prediction1 }}</div>
+    {% endif %}
+    {% if prediction2 %}
+        <div class="result">Prediction of DT: {{ prediction2 }}</div>
+    {% endif %}
+    {% if prediction3 %}
+        <div class="result">Prediction of RFC: {{ prediction3 }}</div>
+    {% endif %}
+</body>
+</html>
